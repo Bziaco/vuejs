@@ -5,6 +5,7 @@
     <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
 </head>
 <body>
+    <!-- view -->
     <div id='simple1'>
         <div>좋아하는 과일을 모두 골라주세요 : </div>
         <input type='checkbox' value="1" v-model="fruits">사과,
@@ -20,9 +21,11 @@
         선택한 과일들 : <span v-html="fruits"></span>
     </div>
     <script type="text/javascript">
+        // model
         var model = {
             fruits : []
         };
+        // viewModel
         var simple1 = new Vue({
             el : '#simple1',
             data : model
