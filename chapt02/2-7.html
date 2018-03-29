@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+</head>
+<body>
+    <div id="account">
+        잔고 : <input type="text" v-model="balance" />
+        <br/>
+        회원님의 등급 : 
+        <span v-if="balance >= 100000">1등급</span>
+        <span v-else-if="balance >= 50000">2등급</span>
+        <span v-else-if="balance >= 10000">3등급</span>
+        <span v-else>등급판정불가</span>
+    </div>
+    <script type="text/javascript">
+        var simple = new Vue({
+            el : '#account',
+            data : {
+                balance : 0
+            }
+        })
+    </script>
+</body>
+</html>
