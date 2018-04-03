@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <title>04-08</title>
+    <link rel="stylesheet" 
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <style>
+        .layout1 { margin:30px 30px 30px 30px; }
+    </style>
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    </head>
+<body>
+    <div id="example" class="container layout1">
+        <p><input type="text" v-model="amount" class="form-control" /></p>
+        <p>
+            <!-- @click.once click 이벤트를 한번만 발생시킴 -->
+            <button id="create" v-on:click.once="specialEvent"
+                class="btn btn-primary">계좌 개설 10000원 이벤트</button>
+            <button id="deposit" v-on:click="deposit($event)" 
+                class="btn btn-primary">예금</button>
+            <button id="withdraw" v-on:click="withdraw" 
+                class="btn btn-primary">인출</button>
+        </p>            
+        <h3>계좌 잔고 : {{balance}}</h3>
+    </div>
+    <script type="text/javascript">
+        var vm = new Vue({
+            el : "#example",
+            data : {
+                balance : 0,
+                amount : 0
+            },
+            methods : {
+                specialEvent : function(e) {
+                    this.balance += 1000;
+                },
+                deposit : function(e){
+                    var amt = parseInt(this.amount);
+                    if(amt < 0 ) {
+                        alert("0보다 큰 수를 입력하세요.")
+                    } else {
+                        return this.balance += amt;
+                    }
+                },
+                withdraw : function(e) {
+                    var amt = parseInt(this.amount);
+                    if(amt < 0) {
+                        alert("0보다 큰 수를 입력하세요.")
+                    } else if(amt > this.balance) {
+                        alert("계좌 잔고보다 큰 금액을 입력할 수 없습니다.");
+                    } else {
+                        return this.balance -= amt;
+                    }
+                }
+            }
+        })
+        
+    </script>
+</body>
+</html>
