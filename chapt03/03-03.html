@@ -32,8 +32,12 @@
                     set : function(amt) {
                         if (typeof(amt) === "string") {
                             var result = parseInt(amt.replace(/,/g, ""))
-                            if (isNaN(result)) this.amt = 0;
-                            else   this.amt = result;
+                            if (isNaN(result)) {
+                                this.amt = 0;
+                            } 
+                            else {
+                                this.amt = result;
+                            }
                         } else if (typeof(amt) === "number")
                             this.amt = amt;
                     }
